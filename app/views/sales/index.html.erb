@@ -26,30 +26,32 @@
             <% @sales_group.reverse_each do |groups| %>
               <div class="bs-callout bs-callout-success">
                 <h4>Upload Feito em <%= groups.created_at.strftime("%D %H:%M") %> (Receita Bruta R$<%= groups.total %>)</h4>
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Comprador</th>
-                      <th>descrição</th>
-                      <th>Preço Uniário</th>
-                      <th>Quantidade</th>
-                      <th>Endereço</th>
-                      <th>Fornecedor</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% groups.sales.each do |sale| %>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
                       <tr>
-                        <td><%= sale.buyer_name %></td>
-                        <td><%= sale.description %></td>
-                        <td>R$<%= sale.unit_price %></td>
-                        <td><%= sale.amount %></td>
-                        <td><%= sale.full_address %></td>
-                        <td><%= sale.provider_name %></td>
+                        <th>Comprador</th>
+                        <th>descrição</th>
+                        <th>Preço Uniário</th>
+                        <th>Quantidade</th>
+                        <th>Endereço</th>
+                        <th>Fornecedor</th>
                       </tr>
-                      <% end %>
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      <% groups.sales.each do |sale| %>
+                        <tr>
+                          <td><%= sale.buyer_name %></td>
+                          <td><%= sale.description %></td>
+                          <td>R$<%= sale.unit_price %></td>
+                          <td><%= sale.amount %></td>
+                          <td><%= sale.full_address %></td>
+                          <td><%= sale.provider_name %></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
           <% end %>
           </div>

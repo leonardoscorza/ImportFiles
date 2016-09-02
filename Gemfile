@@ -24,7 +24,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # To create beautiful html more easily
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
-
+# File Upload Async (Use ref because remotipart are not supporting Rails 5 in master)
+gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d'
 
 
 group :development, :test do
