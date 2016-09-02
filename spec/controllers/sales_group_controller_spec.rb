@@ -48,14 +48,44 @@ RSpec.describe SalesGroupController, type: :controller do
       expect(SalesGroup.last.sales.count).to eq(4)
     end
 
-    it "Firt name of first Sale is João Silva" do
+    it "First Line is identical of the inputed file" do
       post :create, params: {sales_group: {text_file: @file}}
-      expect(SalesGroup.last.sales.first.buyer_name).to eq("João Silva")
+
+      sale = SalesGroup.last.sales[0]
+      saleValues = [sale.buyer_name, sale.description, sale.amount, sale.full_address, sale.provider_name]
+      expectedValues = ["João Silva","R$10 off R$20 of food", 2,"987 Fake St", "Bob's Pizza"]
+
+      expect(saleValues).to eq(expectedValues)
     end
 
-    it "Last Sale has a Provider with name Sneaker Store Emporium" do
+    it "Second Line is identical of the inputed file" do
       post :create, params: {sales_group: {text_file: @file}}
-      expect(SalesGroup.last.sales.last.provider_name).to eq("Sneaker Store Emporium")
+
+      sale = SalesGroup.last.sales[1]
+      saleValues = [sale.buyer_name, sale.description, sale.amount, sale.full_address, sale.provider_name]
+      expectedValues = ["Amy Pond", "R$30 of awesome for R$10", 5, "456 Unreal Rd", "Tom's Awesome Shop"]
+
+      expect(saleValues).to eq(expectedValues)
+    end
+
+    it "Third Line is identical of the inputed file" do
+      post :create, params: {sales_group: {text_file: @file}}
+
+      sale = SalesGroup.last.sales[2]
+      saleValues = [sale.buyer_name, sale.description, sale.amount, sale.full_address, sale.provider_name]
+      expectedValues = ["Marty McFly", "R$20 Sneakers for R$5", 1, "123 Fake St", "Sneaker Store Emporium"]
+
+      expect(saleValues).to eq(expectedValues)
+    end
+
+    it "Fourth Line is identical of the inputed file" do
+      post :create, params: {sales_group: {text_file: @file}}
+
+      sale = SalesGroup.last.sales[3]
+      saleValues = [sale.buyer_name, sale.description, sale.amount, sale.full_address, sale.provider_name]
+      expectedValues = ["Snake Plissken", "R$20 Sneakers for R$5", 4, "123 Fake St", "Sneaker Store Emporium"]
+
+      expect(saleValues).to eq(expectedValues)
     end
   end
 end
