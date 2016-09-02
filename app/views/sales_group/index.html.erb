@@ -10,7 +10,9 @@
   <div class="resume">
     <header class="page-header">
       <h1 class="page-title">Relatórios de Vendas</h1>
-      <small> <i class="fa fa-clock-o"></i>Último upload feito em: <time><%= @sales_group.last.created_at.strftime("%D %H:%M") %></time></small>
+      <% unless @sales_group.empty? %>
+        <small> <i class="fa fa-clock-o"></i>Último upload feito em: <time><%= @sales_group.last.created_at.strftime("%D %H:%M") %></time></small>
+      <% end %>
     </header>
     <div class="row">
       <div class="">
@@ -51,7 +53,7 @@
                         <% end %>
                     </tbody>
                   </table>
-                  <%= button_to "Deletar", {:controller => :sales,:action => 'destroy', :id => groups.id }, :method => :delete , class: 'float-right btn btn-danger btn-sm' %>
+                  <%= button_to "Deletar", {:controller => :sales_group,:action => 'destroy', :id => groups.id }, :method => :delete , class: 'float-right btn btn-danger btn-sm' %>
                 </div>
               </div>
           <% end %>

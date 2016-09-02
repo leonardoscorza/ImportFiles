@@ -1,5 +1,5 @@
 class SalesGroup < ApplicationRecord
-  has_many :sales
+  has_many :sales, dependent: :delete_all
 
   def total
     total = 0

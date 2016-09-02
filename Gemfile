@@ -28,13 +28,19 @@ gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d'
 
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # More Readble Records outputs in console
   gem 'awesome_print'
+end
+
+group :test do
   # Run tests easy, Rspec
   gem 'rspec-rails', '~> 3.5'
+  # Improve tests datas
+  gem 'faker'
+  gem 'factory_girl_rails'
 end
 
 group :development do

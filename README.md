@@ -4,10 +4,9 @@
 O sistema tem uma interface responsiva usando Bootstrap.
 
 
-Things you may want to cover:
-
 * Ruby version: 2.2.2
+* Rails: 5.0.0
 
-* Database creation: SqLite 3
-
-* How to run the test suite
+Instructions:
+* Database creation: "rake db:create" and "rake db:migrate"
+* How to run the test suite: "bundle exec rspec"

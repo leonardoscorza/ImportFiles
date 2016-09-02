@@ -1,8 +1,8 @@
-class SalesController < ApplicationController
+class SalesGroupController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @upload = Sale.new
+    @upload = SalesGroup.new
     @sales_group = SalesGroup.all
   end
 
@@ -48,6 +48,6 @@ class SalesController < ApplicationController
 
   # Filter params
   def upload_params
-    params.require(:sale).permit(:text_file)
+    params.require(:sales_group).permit(:text_file)
   end
 end
