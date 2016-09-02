@@ -25,14 +25,27 @@ class SalesController < ApplicationController
                            sales_group: sales_group
         end
       rescue
+        sales_group.destroy
         format.html { redirect_to root_url, notice: 'Ocorreu um erro no Uploado do arquivo!' }
       end
       format.html { redirect_to root_url, notice: 'O relatório foi adicionado com sucesso!' }
     end
   end
 
+  # DELETE /posts/1
+  # DELETE /posts/1.json
+  def destroy
+    @sales_group = SalesGroup.find params[:id]
+    @sales_group.destroy
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: 'Relatório de vendas deletado' }
+      format.json { head :no_content }
+    end
+  end
+
+
   private
-  
+
   # Filter params
   def upload_params
     params.require(:sale).permit(:text_file)

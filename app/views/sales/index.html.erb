@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row info" style="text-align:center;">
+  <div class="row info notice" style="text-align:center;">
     <% unless notice.blank? %>
       <div class="col-xs-12 alert alert-info">
         <%= notice %>
@@ -16,7 +16,7 @@
       <div class="">
         <div class="panel panel-default">
           <div class="panel-heading resume-heading">
-            <div class="bs-callout bs-callout-success">
+            <div class="bs-callout">
               <h4>Subir novo Relatório</h4>
               <%= form_for(@upload, remote: true, multipart: true) do |f| %>
                 <%= f.file_field :text_file, class:"btn btn-default" %>
@@ -25,7 +25,7 @@
             </div>
             <% @sales_group.reverse_each do |groups| %>
               <div class="bs-callout bs-callout-success">
-                <h4>Upload Feito em <%= groups.created_at.strftime("%D %H:%M") %> (Receita Bruta R$<%= groups.total %>)</h4>
+                <h4>Upload Feito em <%= groups.created_at.strftime("%D %H:%M") %> (Receita Bruta <%= number_to_currency(groups.total, unit: "R$", separator: ",",) %>)</h4>
                 <div class="table-responsive">
                   <table class="table table-striped">
                     <thead>
@@ -43,7 +43,7 @@
                         <tr>
                           <td><%= sale.buyer_name %></td>
                           <td><%= sale.description %></td>
-                          <td>R$<%= sale.unit_price %></td>
+                          <td><%= number_to_currency(sale.unit_price, unit: "R$", separator: ",",) %></td>
                           <td><%= sale.amount %></td>
                           <td><%= sale.full_address %></td>
                           <td><%= sale.provider_name %></td>
@@ -51,6 +51,7 @@
                         <% end %>
                     </tbody>
                   </table>
+                  <%= button_to "Deletar", {:controller => :sales,:action => 'destroy', :id => groups.id }, :method => :delete , class: 'float-right btn btn-danger btn-sm' %>
                 </div>
               </div>
           <% end %>
