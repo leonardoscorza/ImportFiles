@@ -1,15 +1,16 @@
 <div class="container">
   <div class="row info" style="text-align:center;">
-    <div class="col-xs-12 alert alert-info">
-      The skills meter from <a class="alert-link" href="http://bootsnipp.com/snippets/featured/progress-bar-meter">here</a> is used in this design.
-      Feel free to remove this div from the design.
-    </div>
+    <% unless notice.blank? %>
+      <div class="col-xs-12 alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
   </div>
 
   <div class="resume">
     <header class="page-header">
       <h1 class="page-title">Relatórios de Vendas</h1>
-      <small> <i class="fa fa-clock-o"></i>Último upload feito em: <time>Sunday, October 05, 2014</time></small>
+      <small> <i class="fa fa-clock-o"></i>Último upload feito em: <time><%= @sales_group.last.created_at.strftime("%D %H:%M") %></time></small>
     </header>
     <div class="row">
       <div class="">

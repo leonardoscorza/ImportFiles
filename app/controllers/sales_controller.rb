@@ -9,32 +9,30 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
-    total = 0
-
     lines = upload_params[:text_file].tempfile.readlines.map(&:chomp)
     lines.shift
+    sales_group = SalesGroup.create
     respond_to do |format|
-      sales_group = SalesGroup.create
-      lines.each do |l|
-        data = l.split(/\t/)
-        @sale = Sale.new buyer_name: data[0].force_encoding('UTF-8'),
-                         description: data[1].force_encoding('UTF-8'),
-                         unit_price: data[2].force_encoding('UTF-8'),
-                         amount: data[3].force_encoding('UTF-8'),
-                         full_address: data[4].force_encoding('UTF-8'),
-                         provider_name: data[5].force_encoding('UTF-8'),
-                         sales_group: sales_group
-
-        format.json { render json: @sale.errors, status: :unprocessable_entity } unless @sale.save!
+      begin
+        lines.each do |l|
+          data = l.split(/\t/)
+          @sale = Sale.create buyer_name: data[0].force_encoding('UTF-8'),
+                           description: data[1].force_encoding('UTF-8'),
+                           unit_price: data[2].force_encoding('UTF-8'),
+                           amount: data[3].force_encoding('UTF-8'),
+                           full_address: data[4].force_encoding('UTF-8'),
+                           provider_name: data[5].force_encoding('UTF-8'),
+                           sales_group: sales_group
+        end
+      rescue
+        format.html { redirect_to root_url, notice: 'Ocorreu um erro no Uploado do arquivo!' }
       end
-
-      format.json { render json: sales_group.to_json({:include => :sales, :methods => :total}).to_json }
+      format.html { redirect_to root_url, notice: 'O relatório foi adicionado com sucesso!' }
     end
   end
 
-
   private
-
+  
   # Filter params
   def upload_params
     params.require(:sale).permit(:text_file)
