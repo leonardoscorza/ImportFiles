@@ -22,16 +22,11 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# To create beautiful html more easily
+gem 'bootstrap', '~> 4.0.0.alpha3.1'
+# File Upload Async (Use ref because remotipart are not supporting Rails 5 in master)
+gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# File Upload
-gem "paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

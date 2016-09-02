@@ -10,17 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902001042) do
+ActiveRecord::Schema.define(version: 20160902042602) do
 
   create_table "sales", force: :cascade do |t|
     t.string   "buyer_name"
     t.text     "description"
-    t.decimal  "unit_price",    precision: 8, scale: 2
+    t.decimal  "unit_price",     precision: 8, scale: 2
     t.integer  "amount"
     t.string   "full_address"
     t.string   "provider_name"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "sales_group_id"
+  end
+
+  create_table "sales_groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

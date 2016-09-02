@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row info" style="text-align:center;">
+    <div class="col-xs-12 alert alert-info">
+      The skills meter from <a class="alert-link" href="http://bootsnipp.com/snippets/featured/progress-bar-meter">here</a> is used in this design.
+      Feel free to remove this div from the design.
+    </div>
+  </div>
+
+  <div class="resume">
+    <header class="page-header">
+      <h1 class="page-title">Relatórios de Vendas</h1>
+      <small> <i class="fa fa-clock-o"></i>Último upload feito em: <time>Sunday, October 05, 2014</time></small>
+    </header>
+    <div class="row">
+      <div class="">
+        <div class="panel panel-default">
+          <div class="panel-heading resume-heading">
+            <div class="bs-callout bs-callout-success">
+              <h4>Subir novo Relatório</h4>
+              <%= form_for(@upload, remote: true, multipart: true) do |f| %>
+                <%= f.file_field :text_file  %>
+                <%= f.submit "Subir Arquivo", class: 'btn btn-success' %>
+              <% end %>
+            </div>
+            <div class="bs-callout bs-callout-success">
+              <h4>Upload Feito em 12/12/12</h4>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Comprador</th>
+                    <th>descrição</th>
+                    <th>Preço Uniário</th>
+                    <th>Quantidade</th>
+                    <th>Endereço</th>
+                    <th>Fornecedor</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td>12</td>
+                    <td>12</td>
+                    <td>12</td>
+                    <td>12</td>
+                  </tr>
+                  <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <td>12</td>
+                    <td>12</td>
+                    <td>12</td>
+                    <td>12</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>

@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'sales#index'
+  post 'sales' => 'sales#create', as: :sales
 end
